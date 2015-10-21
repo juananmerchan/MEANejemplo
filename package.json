@@ -1,0 +1,15 @@
+{
+  "name": "meanejemplo",
+  "version": "1.0.0",
+  "description": "Aplicacion de registro de nombres conectada a base de datos",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juanan",
+  "license": "ISC",
+  "dependencies" : {
+    "express"    : "~3.4.4",
+    "mongoose"   : "~3.6.2"
+  }
+}
