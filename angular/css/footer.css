@@ -1,0 +1,53 @@
+@media screen and (min-width: 48em)
+#footer {
+    float: left;
+    display: block;
+    background-color: #FD6303;
+    width: 100%;
+    margin: 0.8rem 0 0;
+    padding: 0 0 0 2rem;
+    font-size: 2.0rem;
+}
+#footer {
+    zoom: 1;
+    display: none;
+    clear: both;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheetarticle, aside, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+Inherited from body
+body {
+    height: 100%;
+    font-family: Verdana, Geneva, sans-serif;
+    margin-top: 0;
+    margin-bottom: 0;
+    background: #FD6303;
+    color: #666;
+}
+Inherited from html.no-js
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+Pseudo ::before element
+#footer:before, #footer:after {
+    content: "";
+    display: table;
+}
+Pseudo ::after element
+#footer:after {
+    clear: both;
+}
+#footer:before, #footer:after {
+    content: "";
+    display: table;
+}

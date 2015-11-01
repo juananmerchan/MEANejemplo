@@ -4,7 +4,8 @@ var mongoose = require("mongoose");
 var port = process.env.Port || 8080;
 
 //Configuracion conexion a base de datos
-mongoose.connect("mongodb://localhost:27017/MeanExample");
+//mongoose.connect("mongodb://localhost:27017/MeanExample");
+mongoose.connect("mongodb://localhost:27017/BankApp");
 
 app.configure(function(){
 	app.use(express.static(__dirname + "/angular"));

@@ -1,0 +1,58 @@
+
+<div class="container">
+	<div class="jumbotron text-center" >
+			<h1>Nº de Registros: <span class="label label-success">{{ users.length }}</span></h1>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-1">
+				<table class="table table-striped">
+					<tr class="info">
+						<td>Nombre</td>
+						<td>Apellido</td>
+						<td>Direccion</td>
+						<td>Cuenta Corriente</td>
+						<td>Tarjeta</td>
+						<td>Usuario</td>
+						<td>Password</td>
+					<tr ng-repeat="usuario in users" ng-click="selectPerson(usuario)">
+						<td>{{ usuario.datosPersonales.nombre }}</td>
+						<td>{{ usuario.datosPersonales.apellidos}}</td>
+						<td>{{ usuario.datosPersonales.direccion}}</td>
+						<td>{{ usuario.cuentaCorriente.saldo}}</td>
+						<td>{{ usuario.cuentaCorriente.tarjeta}}</td>
+						<td>{{ usuario.usuario }}</td>
+						<td>{{ usuario.password}}</td>
+										
+					</tr>
+				</table>					
+			</div>
+			<div class="col-sm-4 col-sm-offset-1 text-center">
+				<form name="myForm">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg text-center" placeholder="Nombre" ng-model="newUser.datosPersonales.nombre" required >
+						<br>
+						<input type="text" class="form-control input-lg text-center" placeholder="Apellido" ng-model="newUser.datosPersonales.apellidos" required>
+						<br>
+						<input type="text" class="form-control input-lg text-center" placeholder="Direccion" ng-model="newUser.datosPersonales.direccion" required>
+						<br>
+						<input type="text" class="form-control input-lg text-center" placeholder="Saldo en Cuenta Corriente" ng-model="newUser.cuentaCorriente.saldo" required>
+						<br>
+						<label>Tarjeta Activa:
+  						  <input type="checkbox"  ng-model="newUser.cuentaCorriente.tarjeta">
+  						</label>
+						<br>
+						<input type="text" class="form-control input-lg text-center" placeholder="Usuario" ng-model="newUser.usuario" required>
+						<br>
+						<input type="text" class="form-control input-lg text-center" placeholder="Password" ng-model="newUser.password" required>
+					</div>
+					<!--Acciones que podemos realizar en el formulario --> 
+					<button type="submit" class="btn btn-success btn-lg" ng-click="registrarPersona()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+					<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newUser)">Modificar</button>
+					<button type="submit" class="btn btn-danger btn-lg" ng-click="borrarPersona(newUser)" ng-disabled="!selected">Borrar</button>
+					<button type="submit" class="btn btn-warning btn-lg" ng-click="clearForm(newUser)">Limpiar Formulario</button>
+				</form>
+			</div>
+		</div>
+		
+</div>
