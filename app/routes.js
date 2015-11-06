@@ -17,7 +17,9 @@ module.exports = function(app) {
 	// Borrar una Persona
 	app.delete('/api/user/:user_id', Controller.removePersona);
 	// application
-	
+
+	app.post('/auth/signup', Controller.emailSignup);  
+    app.post('/auth/login', Controller.emailLogin);
 };
 
 

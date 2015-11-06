@@ -1,4 +1,42 @@
 <br>
 <br>
-<br>
-<h1> Esta es la Home </h1>
+<div class="container">
+	<div class="jumbotron text-center" >
+			<h1>Este es el HOME</h1>
+			<br>
+			<h2 ng-show="nombre">Hola  {{nombre.datosPersonales.nombre}} <h1 ng-hide="nombre.datosPersonales.nombre">{{nombre.usuario}}</h1> {{nombre.mensaje}}</h2>
+	</div>
+
+	<div class="col-sm-4 col-sm-offset-4 text-center">
+				<form name="myForm">
+					<div class="form-group">
+						<label>NOMBRE</label>
+						<input type="text" class="form-control input-lg text-center" placeholder="Nombre" ng-model="nombre.datosPersonales.nombre" required >
+						<br>
+						<label>APELLIDO</label>
+						<input type="text" class="form-control input-lg text-center" placeholder="Apellido" ng-model="nombre.datosPersonales.apellidos" required>
+						<br>
+						<label>DIRECCION</label>
+						<input type="text" class="form-control input-lg text-center" placeholder="Direccion" ng-model="nombre.datosPersonales.direccion" required>
+						<br>
+						<label>SALDO</label>
+						<input type="text" class="form-control input-lg text-center" placeholder="Saldo en Cuenta Corriente" ng-model="nombre.cuentaCorriente.saldo" required>
+						<br>
+						<label>Tarjeta Activa:
+  						  <input type="checkbox"  ng-model="nombre.cuentaCorriente.tarjeta">
+  						</label>
+						<br>
+						<label>NOMBRE</label>
+						<input type="text" class="form-control input-lg text-center" placeholder="Usuario" ng-model="nombre.usuario" required>
+						<br>
+						<label>PASSWORD</label>
+						<input type="text" class="form-control input-lg text-center" placeholder="Password" ng-model="nombre.password" required>
+					</div>
+					<!--Acciones que podemos realizar en el formulario --> 
+					
+					<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(nombre)">Modificar</button>
+				</form>
+			</div>
+		</div>
+</div>
+			

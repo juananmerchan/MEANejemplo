@@ -1,6 +1,7 @@
 var User = require("./modelo/user");
 
 
+
 //Obtiene todos los objetos de la persona de la base de datos
 exports.getPersona = function(req,res){
 	User.find(function(err, user){
@@ -118,4 +119,69 @@ exports.removePersona = function(req, res) {
 				res.json(user);
 			});
 		});
+
 }
+
+exports.emailSignup = function(req, res) {  
+	User.findOne({usuario: req.body.usuario}, function(err, user) {
+		if (err){
+			res.send(err);
+		}else if (!user){
+			 User.create({
+				usuario: req.body.usuario,
+				password: req.body.password
+			},
+			function(err,user){
+				if(err){
+					res.send(err);
+					res.json({"mensaje": "Ha ocurrido el siguiente error" + err +"intentelo mas tarde"});
+				}else{
+					res.json({"mensaje": " "+user.usuario+" te has inscrito correctamente logueate para acceder a tu cuenta"});
+					//Obtiene y devuelve todas las personas tras crear una de ella
+					User.find(function(err, user){
+						if (err){
+							res.send(err);
+							console.log("err");
+						}else{
+							res.json(user);//devuelve todas las personas en JSON
+							console.log("usuarios " + user);
+						}
+					});
+				};
+			});
+
+		}else{
+			console.log("El usuario ya existe");
+			res.json({"mensaje":"EL usuario esta ocupado pruebe con otro"});
+		}   
+	});
+}
+
+exports.emailLogin = function(req, res) {  
+    User.findOne({usuario: req.body.usuario}, function(err, user) {
+        // Comprobar si hay errores()
+        if (err){
+        	res.send(err);
+        }else if (user){
+        	console.log("el usuario existe");
+        	if (user.usuario== req.body.usuario && user.password == req.body.password){
+        		console.log("Usuario: " + user.usuario + " contraseña : "+user.password);
+        		console.log("contraseña y usuario correctos");
+        		res.json(user);
+        	}else{
+        		console.log("La contraseña o el usuario son incorrectos");
+        	
+        		res.json({"mensaje":"La contraseña o el usuario son incorrectos vuelva a intenrarlo"});
+        	}
+        	
+        }else {
+        	console.log("Usuario no existe");
+        	res.json({"mensaje":"EL usuario no existe"});
+        }
+
+        // Si el usuario existe o no.
+        // Y si la contraseña es correcta
+        return res
+            .status(200);
+    });
+};
